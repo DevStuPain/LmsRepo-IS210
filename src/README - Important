@@ -1,0 +1,44 @@
+Very important read ALL before you start coding
+
+! For the book class the following should look like this exactly !
+
+public class Book
+
+*For the constructor the order of param matters*
+
+public Book(String title, String author, String ISBN, int year)
+
+*Methods made that are called by library.java*
+
+public String getTitle()
+public String getAuthor()
+public String getISBN()
+public boolean isAvailable()
+public void setAvailable(boolean available)
+
+! For Library class the following should look like this exactly !
+
+public class Library
+
+*Constructor*
+
+public Library()
+
+*Methods in library class - Names, Parameters, return types*
+
+public void addBook(Book book)
+public void removeBook(String ISBN)
+public void searchBook(String keyword)
+public void displayBooks()
+public void checkOutBook(String ISBN)
+public void returnBook(String ISBN)
+public void loadBooksFromFile(String filename)
+
+!!!
+    Golden rule guys, just make sure before you start to code
+    that you pull whatever is at the repo. Then when you finish
+    coding you commit and push it back up to the repo. However
+    if it says theres a coding error and points to a missing
+    semicolon or parentheses, anything like that. Make sure
+    to fix it before doing fully commiting and pushing it out.
+!!!

@@ -1,0 +1,148 @@
+1. Book Class
+CLASS Book
+    PROPERTIES:
+        title (String)
+        author (String)
+        ISBN (String)
+        publicationYear (int)
+        isAvailable (boolean)
+    
+    CONSTRUCTOR:
+        Initialize title, author, ISBN, publicationYear
+        Set isAvailable to TRUE (book is available when added)
+    
+    METHODS:
+        getTitle() -> RETURN title
+        getAuthor() -> RETURN author
+        getISBN() -> RETURN ISBN
+        getPublicationYear() -> RETURN publicationYear
+        isAvailable() -> RETURN isAvailable
+        setAvailable(boolean) -> Set isAvailable to the given value
+        
+        toString() -> RETURN formatted string containing book information
+END CLASS
+
+2. Library Class
+CLASS Library
+    PROPERTIES:
+        books (ArrayList of Book objects)
+    
+    CONSTRUCTOR:
+        Initialize books as an empty ArrayList
+
+    METHODS:
+        addBook(book):
+            Add the book to the books list
+            Print "Book added: [book's title]"
+        
+        removeBook(ISBN):
+            FOR each book in books
+                IF book's ISBN matches the given ISBN
+                    Remove the book from the list
+                    Print "Book removed: [book's title]"
+                    RETURN
+            Print "Book with ISBN [ISBN] not found"
+        
+        searchBook(keyword):
+            Initialize found as FALSE
+            FOR each book in books
+                IF book's title or author matches keyword
+                    Print the book's information
+                    Set found to TRUE
+            IF found is FALSE
+                Print "No books found for the keyword: [keyword]"
+        
+        displayBooks():
+            IF books is empty
+                Print "No books in the library"
+                RETURN
+            FOR each book in books
+                Print the book's information
+        
+        checkOutBook(ISBN):
+            FOR each book in books
+                IF book's ISBN matches the given ISBN
+                    IF book is available
+                        Set the book to unavailable
+                        Print "Book checked out: [book's title]"
+                    ELSE
+                        Print "Book is already checked out"
+                    RETURN
+            Print "Book with ISBN [ISBN] not found"
+        
+        returnBook(ISBN):
+            FOR each book in books
+                IF book's ISBN matches the given ISBN
+                    IF book is not available
+                        Set the book to available
+                        Print "Book returned: [book's title]"
+                    ELSE
+                        Print "Book was not checked out"
+                    RETURN
+            Print "Book with ISBN [ISBN] not found"
+        
+        loadBooksFromFile(filename):
+            OPEN the file with the given filename
+            FOR each line in the file
+                Split the line by commas
+                IF the data has 4 parts (title, author, ISBN, year)
+                    Parse and create a new Book object
+                    Add the book to the books list
+                ELSE
+                    Print "Invalid book data format: [line]"
+            Print "Books loaded from file: [filename]"
+            HANDLE any file reading errors (e.g., file not found)
+END CLASS
+
+3. Main Class
+MAIN FUNCTION:
+    Initialize Library object
+
+    WHILE TRUE:
+        PRINT menu options:
+            1. Add Book
+            2. Remove Book
+            3. Search Book
+            4. Display All Books
+            5. Check Out Book
+            6. Return Book
+            7. Load Books From File
+            8. Exit
+        GET user input as choice
+
+        SWITCH choice:
+            CASE 1: 
+                PROMPT for title, author, ISBN, and year
+                CREATE a new Book object with the entered data
+                CALL addBook(newBook) on Library object
+
+            CASE 2: 
+                PROMPT for ISBN of the book to remove
+                CALL removeBook(ISBN) on Library object
+
+            CASE 3: 
+                PROMPT for title or author to search
+                CALL searchBook(keyword) on Library object
+
+            CASE 4: 
+                CALL displayBooks() on Library object
+
+            CASE 5: 
+                PROMPT for ISBN of the book to check out
+                CALL checkOutBook(ISBN) on Library object
+
+            CASE 6: 
+                PROMPT for ISBN of the book to return
+                CALL returnBook(ISBN) on Library object
+
+            CASE 7: 
+                PROMPT for filename to load books
+                CALL loadBooksFromFile(filename) on Library object
+
+            CASE 8: 
+                PRINT "Exiting..."
+                EXIT the program
+
+            DEFAULT: 
+                PRINT "Invalid option. Please try again."
+END MAIN FUNCTION
