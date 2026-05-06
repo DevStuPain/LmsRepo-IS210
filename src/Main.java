@@ -72,7 +72,7 @@ public class Main {
 
                 // Search for book
                 case 3:
-                    System.out.print("Enter title or author to search: ");
+                    System.out.print("Enter title or author, or isbn to search: ");
                     String keyword = scanner.nextLine();
                     library.searchBook(keyword);
                     break;
