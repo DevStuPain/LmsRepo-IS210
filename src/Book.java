@@ -13,7 +13,7 @@ public class Book {
         this.ISBN = ISBN;
         this.publicationYear = publicationYear;
         this.isAvailable = true; // book is available when created
-         
+    }
     // METHODS
     public String getTitle() {
         return title;
